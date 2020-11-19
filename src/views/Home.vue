@@ -1,5 +1,7 @@
 <template>
-  <div class="home">home</div>
+  <div class="home bg-main flex-1">
+   11
+  </div>
 </template>
 
 <script>
@@ -10,3 +12,8 @@ export default {
   components: {},
 };
 </script>
+<style lang="stylus" scoped>
+.home {
+  padding 0 40px 26px 40px
+}
+</style>
