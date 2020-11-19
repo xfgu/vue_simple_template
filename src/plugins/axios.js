@@ -2,23 +2,25 @@
 
 import Vue from 'vue';
 import axios from "axios";
-
+import qs from 'qs'
 // Full config:  https://github.com/axios/axios#request-config
 // axios.defaults.baseURL = process.env.baseURL || process.env.apiUrl || '';
 // axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
 let config = {
-  // baseURL: process.env.baseURL || process.env.apiUrl || ""
-  // timeout: 60 * 1000, // Timeout
-  // withCredentials: true, // Check cross-site Access-Control
+  baseURL: process.env.VUE_APP_baseURL || "",
+  timeout: 60 * 1000, // Timeout
+  withCredentials: true, // Check cross-site Access-Control
 };
 
 const _axios = axios.create(config);
 
 _axios.interceptors.request.use(
   function(config) {
-    // Do something before request is sent
+    if (config.method === 'post') {
+      config.data = qs.stringify(config.data)
+    }
     return config;
   },
   function(error) {
@@ -34,7 +36,9 @@ _axios.interceptors.response.use(
     return response;
   },
   function(error) {
-    // Do something with response error
+    if (error.message) {
+      Vue.prototype.$message.error(error.message || '返回错误')
+    }
     return Promise.reject(error);
   }
 );
