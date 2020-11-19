@@ -1,0 +1,251 @@
+bg = {
+    line: #f0f1f3,
+    primary: #09af7b,
+    main: #f8f8fa,
+    info: #54647d,
+    white: #fff,
+    danger: #f75d5d,
+    danger-light: #fbaeae,
+    gray: #8c9cb3,
+    bg99: #fef0f0
+};
+colors = {
+    primary: #09af7b,
+    black: #3d4c63,
+    info: #54647d,
+    gray: #8c9cb3,
+    success: #09af7b,
+    danger: #f75d5d,
+    remove: #fb374a,
+    white: #fff,
+    border: #f3f3f3
+};
+
+.cp {
+    cursor: pointer;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.flex-d {
+    flex-direction: column;
+}
+
+.flex-1 {
+    flex: 1;
+    overflow: hidden;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.between {
+    justify-content: space-between;
+}
+
+.h-100, .el-card__body {
+    height: 100% !important;
+    overflow: hidden;
+}
+
+.cover {
+    object-fit: cover;
+}
+
+.w-100 {
+    width: 100%;
+    // overflow: hidden;
+}
+
+.bra {
+    border-radius: 5px;
+}
+
+for key, val in bg {
+    .bg-{key} {
+        background-color: val;
+        color: colors['white'];
+        // border: 1px solid transparent;
+    }
+}
+
+for key, val in colors {
+    .{key} {
+        color: val;
+    }
+}
+
+for val in range(12px, 30px) {
+    .fs-{val} {
+        font-size: val;
+    }
+}
+
+direction = {
+    t: top,
+    r: right,
+    b: bottom,
+    l: left
+};
+distance = {
+    p: padding,
+    m: margin,
+    b: border
+};
+
+for i in 8 .. 22 {
+    for j, item in distance {
+        .{j}-{i} {
+            {item}: i * 1px;
+        }
+
+        .{j}-0 {
+            {item}: 0;
+        }
+
+        .{j}x-{i} {
+            {item}: 0 i * 1px;
+        }
+
+        .{j}y-{i} {
+            {item}: i * 1px 0;
+        }
+
+        for key, value in direction {
+            .{j}{key}-{i} {
+                {item}-{value}: i * 1px;
+            }
+        }
+    }
+}
+
+@css {
+    .calc{
+       height:  calc(100vh - 60px);
+     }
+}
+jc = {
+    between: space-between,
+    evenly: space-evenly,
+    around: space-around,
+    center: center,
+    end: flex-end
+};
+
+.ai-center {
+    align-items: center;
+}
+
+for key, val in jc {
+    .{key} {
+        justify-content: val;
+    }
+}
+
+.iconfont {
+    &.active {
+        border: 1px solid colors['primary'];
+        color: colors['primary'];
+    }
+}
+
+.active {
+    background: bg['primary'];
+    color: colors['white'];
+}
+
+.active2 {
+    color: colors['primary'];
+}
+
+.un {
+    user-select: none;
+}
+
+$border {
+    border: 1px solid colors['border'];
+}
+
+.border {
+    @extend $border;
+}
+
+bor = {
+    bt: border-top,
+    br: border-right,
+    bb: border-bottom,
+    bl: border-left
+};
+
+for key, val in bor {
+    .{key} {
+        {val}: 1px solid colors['border'];
+    }
+}
+
+.bs {
+    box-shadow: 0 2px 6px 0 rgba(bg['primary'], 0.1);
+}
+
+.bs2 {
+    box-shadow: -2px 0 6px 0 rgba(bg['primary'], 0.1);
+}
+
+.bs3 {
+    box-shadow: 1px 3px 8px 0 rgba(bg['primary'], 0.1) !important;
+}
+
+.sec {
+    .w-100 {
+        width: 100% !important;
+    }
+}
+
+#app {
+    .el-scrollbar__wrap {
+        overflow-x: hidden;
+    }
+}
+
+.w-240 {
+    width: 240px;
+}
+
+.w-222 {
+    width: 222px;
+}
+
+.circle {
+    width: 10px;
+    height: 10px;
+    background: bg['primary'];
+    display: inline-block;
+    border-radius: 100%;
+}
+
+.circle2 {
+    @extend .circle;
+    width: 6px;
+    height: 6px;
+}
+
+.circle3 {
+    @extend .circle;
+    width: 8px;
+    height: 8px;
+}
+
+.fw {
+    font-weight: 900;
+}
+
+.avue-crud .el-tag {
+    display: none !important;
+}
+
+.avue-crud__menu {
+    display: none !important;
+}
